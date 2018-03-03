@@ -6,10 +6,10 @@ import org.springframework.data.mongodb.core.mapping.Document
 /**
  * @author Gladîș Vladlen on 3/2/18.
  */
-@Document
+@Document(collection = "sentence")
 data class Sentence(
         @Id var id: String? = null,
-        var deutsch: String = "",
-        var russian: String = "",
-        var solved: Boolean = false
+            var deutsch: String = "",
+            var russian: String = "",
+            var solved: Boolean = false
 )
