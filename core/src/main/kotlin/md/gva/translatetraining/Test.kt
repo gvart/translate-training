@@ -1,6 +1,5 @@
 package md.gva.translatetraining
 
-import md.gva.translatetraining.data.Dictionary
 import md.gva.translatetraining.repository.DictionaryRepository
 import md.gva.translatetraining.repository.SentenceRepository
 import md.gva.translatetraining.service.PhrasesService

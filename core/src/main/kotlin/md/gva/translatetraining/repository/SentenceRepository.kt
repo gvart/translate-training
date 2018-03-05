@@ -1,7 +1,6 @@
 package md.gva.translatetraining.repository
 
 import md.gva.translatetraining.data.Sentence
-import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 
 /**

@@ -8,5 +8,9 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 .gradle/
-gradle/
-/out/
+/client/dist/
+/client/.gradle/
+/client/build/
+/client/node_modules/
+/client/node/
+/core/build/

@@ -1,0 +1,24 @@
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+
+apply plugin: 'java'
+
+node {
+  version = '6.5.0'
+  npmVersion = '3.10.7'
+  download = false
+  workDir = file("${project.projectDir}/node")
+}
+
+task runAngular(type: NpmTask) {
+  group = 'application'
+  args = ['run', 'start']
+}
+
+task buildAngular(type: NpmTask) {
+  args = ['run', 'build']
+}
+
+buildAngular.dependsOn('npmInstall')
+build.dependsOn('buildAngular')

@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class TranslateTrainingApplication
+class Application
 
 fun main(args: Array<String>) {
-    runApplication<TranslateTrainingApplication>(*args)
+    runApplication<Application>(*args)
 }
