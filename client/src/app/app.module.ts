@@ -1,25 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import {routing} from "./app.routing";
-import { NavbarComponent } from './theme/navbar/navbar.component';
-import { FooterComponent } from './theme/footer/footer.component';
-import { MenuComponent } from './theme/menu/menu.component';
-import { HomeComponent } from './main/home/home.component';
-
+import {MatSidenavModule, MatToolbarModule, MatButtonModule} from "@angular/material";
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    MenuComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    FlexLayoutModule,
     routing
   ],
   bootstrap: [AppComponent]

@@ -1,8 +1,18 @@
-<div>
-  <app-navbar></app-navbar>
-  <app-menu></app-menu>
 
+  <header>
+    <mat-toolbar color="accent">
+      <button mat-button (click)="sidenav.toggle()">click</button>
+    </mat-toolbar>
+  </header>
+
+
+<mat-sidenav-container style="height: 100%">
+
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <button mat-button="primary">Add Word</button>
+  </mat-sidenav>
+  herlloss
   <router-outlet></router-outlet>
+</mat-sidenav-container>
 
-  <app-footer></app-footer>
-</div>
+<footer>test</footer>
