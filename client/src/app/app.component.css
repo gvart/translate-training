@@ -1,0 +1,26 @@
+div:hover h1 {
+  cursor: pointer;
+  color: white !important;
+}
+
+h1 {
+  display: inline;
+}
+
+h1#second {
+  color: #fad3ff;
+}
+
+mat-sidenav > button {
+  display:block;
+}
+
+mat-sidenav {
+  background-color: blanchedalmond;
+}
+
+footer {
+  text-align: center;
+  color: slategray;
+  font-size: 10pt;
+}

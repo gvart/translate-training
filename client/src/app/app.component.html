@@ -1,18 +1,25 @@
-
-  <header>
-    <mat-toolbar color="accent">
-      <button mat-button (click)="sidenav.toggle()">click</button>
-    </mat-toolbar>
-  </header>
-
+<header>
+  <mat-toolbar color="accent">
+    <div routerLink="/"><h1 id="first">TT</h1><h1 id="second">raining</h1></div>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <fa name="bars"></fa>
+    </button>
+  </mat-toolbar>
+</header>
 
 <mat-sidenav-container style="height: 100%">
 
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-        <button mat-button="primary">Add Word</button>
+    <a mat-button="primary" routerLink="/new-word">
+      <fa name="font"></fa>Add Word
+    </a>
+    <button mat-button="primary">
+      <fa name="file"></fa>Start Test
+    </button>
   </mat-sidenav>
-  herlloss
+
   <router-outlet></router-outlet>
+
 </mat-sidenav-container>
 
-<footer>test</footer>
+<footer>Developed by <a href="#">GVA</a> with <fa style="color: red;" name="heart"></fa></footer>

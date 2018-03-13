@@ -6,6 +6,9 @@ import {routing} from "./app.routing";
 import {MatSidenavModule, MatToolbarModule, MatButtonModule} from "@angular/material";
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NewWordComponent } from './main/new-word/new-word.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,11 +16,13 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
     FlexLayoutModule,
+    AngularFontAwesomeModule,
     routing
   ],
   bootstrap: [AppComponent]

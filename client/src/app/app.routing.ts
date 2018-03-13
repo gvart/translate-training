@@ -3,11 +3,18 @@ import {ModuleWithProviders} from "@angular/core";
 
 export const routes: Routes = [
   {
-    path: '**', redirectTo: ''
+    path: '',
+    loadChildren: './main/home/home.module#HomeModule'
   },
   {
-    path: '', loadChildren: './main/home/home.module#HomeModule'
+    path: 'new-word',
+    loadChildren: './main/new-word/new-word.module#NewWordModule'
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true});
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
