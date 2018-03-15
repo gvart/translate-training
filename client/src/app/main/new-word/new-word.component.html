@@ -1,3 +1,9 @@
-<p>
-  new-word works!
-</p>
+<div class="container">
+  <div fxFlex>
+    <mat-form-field>
+      <input [(ngModel)]="word.name" matInput [placeholder]="'newWord' | translate">
+    </mat-form-field>
+    <button (click)="saveWord()" mat-raised-button color="primary"><fa name="check"></fa>{{'save' | translate}}</button>
+  </div>
+</div>
+

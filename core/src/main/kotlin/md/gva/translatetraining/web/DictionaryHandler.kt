@@ -4,11 +4,17 @@ import md.gva.translatetraining.config.WebConfig.Companion.MAIN_ROUTE
 import md.gva.translatetraining.data.Dictionary
 import md.gva.translatetraining.data.DictionaryDTO
 import md.gva.translatetraining.service.DictionaryService
+import md.gva.translatetraining.util.json
+import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
+import org.springframework.web.reactive.function.BodyExtractors
+import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.*
+import org.springframework.web.reactive.function.server.bodyToMono
 import reactor.core.publisher.Mono
+import reactor.core.publisher.toMono
 import java.net.URI
 
 @Component
@@ -26,8 +32,12 @@ class DictionaryHandler(private val dictionaryService: DictionaryService) {
 
     fun create(req: ServerRequest): Mono<ServerResponse> {
         return req.bodyToMono(DictionaryDTO::class.java)
-                .flatMap { word -> this.dictionaryService.save(word.name) }
-                .flatMap { (id) -> created(URI.create(MAIN_ROUTE + "/" + id)).build() }
+                .flatMap { this.dictionaryService.save(it) }
+                .flatMap {
+                    created(URI.create("$MAIN_ROUTE/${it.id}"))
+                         .json().body(BodyInserters.fromObject(it))
+                }
+                .switchIfEmpty( unprocessableEntity().build() )
     }
 
     fun get(req: ServerRequest): Mono<ServerResponse> {

@@ -1,3 +1,9 @@
-<p>
-  home works!
-</p>
+<div *ngIf="words">
+  <div fxLayout="column">
+    <div fxLayoutGap="10px" fxFlex="50" fxLayoutAlign="space-between center" *ngFor="let item of words">
+      <h4>{{item.name}}</h4>
+      <mat-progress-bar mode="determinate" [value]="dictionaryUtil.solvedPercentage(item)"></mat-progress-bar>
+      <span>{{dictionaryUtil.solvedPercentage(item) + '%'}}</span>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,10 @@
 package md.gva.translatetraining.service
 
 import md.gva.translatetraining.data.Dictionary
-import md.gva.translatetraining.data.solved
+import md.gva.translatetraining.data.DictionaryDTO
 import md.gva.translatetraining.repository.DictionaryRepository
 import md.gva.translatetraining.repository.SentenceRepository
+import md.gva.translatetraining.util.solved
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -15,18 +16,22 @@ import reactor.core.publisher.Mono
 class DictionaryService(
         val phrasesService: PhrasesService,
         val sentenceRepository: SentenceRepository,
-        val dictionaryRepository: DictionaryRepository)
-{
+        val dictionaryRepository: DictionaryRepository) {
 
+    fun save(word: DictionaryDTO): Mono<Dictionary> {
+        if(!word.name.isNullOrEmpty()) {
+            val item = dictionaryRepository.findByNameIgnoreCase(word.name).block()
+            if (item == null) {
+                val sentences = phrasesService.getPhrases(word.name)
+                val saveAll = sentenceRepository.saveAll(sentences).collectList()
+                val dictionary = Dictionary()
 
-    fun save(word: String): Mono<Dictionary> {
-        val sentences = phrasesService.getPhrases(word)
-        val saveAll = sentenceRepository.saveAll(sentences).collectList()
-        val dictionary = Dictionary()
-
-        dictionary.name = word
-        dictionary.sentences = saveAll.block()!!
-        return dictionaryRepository.save(dictionary)
+                dictionary.name = word.name
+                dictionary.sentences = saveAll.block()!!
+                return dictionaryRepository.save(dictionary)
+            }
+        }
+        return Mono.empty()
     }
 
     fun findAllUnsolved(): Flux<Dictionary> {
