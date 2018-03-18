@@ -1,6 +1,7 @@
 package md.gva.translatetraining.config
 
 import md.gva.translatetraining.web.DictionaryHandler
+import md.gva.translatetraining.web.TestHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.config.EnableWebFlux
@@ -12,18 +13,20 @@ import org.springframework.web.reactive.function.server.ServerResponse
 
 @Configuration
 @EnableWebFlux
-class WebConfig {
+open class WebConfig {
 
     companion object {
-        const val MAIN_ROUTE = "/api/dictionary"
+        const val DICTIONARY_ROUTE = "/api/dictionary"
+        const val TEST_ROUTE = "/api/test"
     }
 
     @Bean
-    fun routes(dictController: DictionaryHandler): RouterFunction<ServerResponse> {
-        return route(GET(MAIN_ROUTE), HandlerFunction<ServerResponse>(dictController::all))
-                .andRoute(POST(MAIN_ROUTE), HandlerFunction<ServerResponse>(dictController::create))
-                .andRoute(GET(MAIN_ROUTE + "/{id}"), HandlerFunction<ServerResponse>(dictController::get))
-                .andRoute(GET(MAIN_ROUTE + "/sentence/{id}"), HandlerFunction<ServerResponse>(dictController::update))
-                .andRoute(DELETE(MAIN_ROUTE + "/{id}"), HandlerFunction<ServerResponse>(dictController::delete))
+    open fun routes(dictController: DictionaryHandler, testController: TestHandler): RouterFunction<ServerResponse> {
+        return route(GET(DICTIONARY_ROUTE), HandlerFunction<ServerResponse>(dictController::all))
+                .andRoute(POST(DICTIONARY_ROUTE), HandlerFunction<ServerResponse>(dictController::create))
+                .andRoute(GET("$DICTIONARY_ROUTE/{id}"), HandlerFunction<ServerResponse>(dictController::get))
+                .andRoute(GET("$DICTIONARY_ROUTE/sentence/{id}"), HandlerFunction<ServerResponse>(dictController::update))
+                .andRoute(DELETE("$DICTIONARY_ROUTE/{id}"), HandlerFunction<ServerResponse>(dictController::delete))
+                .andRoute(GET(TEST_ROUTE), HandlerFunction<ServerResponse>(testController::getTest))
     }
 }

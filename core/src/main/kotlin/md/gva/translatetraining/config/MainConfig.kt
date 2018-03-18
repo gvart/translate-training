@@ -8,4 +8,4 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  */
 @Configuration
 @EnableMongoRepositories("md.gva.translatetraining.repository")
-class MainConfig
+open class MainConfig

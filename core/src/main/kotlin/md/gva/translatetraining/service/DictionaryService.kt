@@ -14,9 +14,9 @@ import reactor.core.publisher.Mono
  */
 @Service
 class DictionaryService(
-        val phrasesService: PhrasesService,
-        val sentenceRepository: SentenceRepository,
-        val dictionaryRepository: DictionaryRepository) {
+        private val phrasesService: PhrasesService,
+        private val sentenceRepository: SentenceRepository,
+        private val dictionaryRepository: DictionaryRepository) {
 
     fun save(word: DictionaryDTO): Mono<Dictionary> {
         if(!word.name.isNullOrEmpty()) {

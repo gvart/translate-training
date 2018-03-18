@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {DictionaryService} from "../../../shared/service/dictionary.service";
 import {DictionaryDTO} from "../../../shared/model/dictionary.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-word',
@@ -12,7 +13,8 @@ export class NewWordComponent implements OnInit {
   private word: DictionaryDTO;
 
   constructor(private translate: TranslateService,
-              private service: DictionaryService) { }
+              private service: DictionaryService,
+              private router: Router) { }
 
   ngOnInit() {
     this.translate.setDefaultLang('en');
@@ -22,7 +24,7 @@ export class NewWordComponent implements OnInit {
 
   saveWord() {
     this.service.saveWord(this.word).subscribe( (response) => {
-      console.log(response);
+      this.router.navigate(['/']);
     });
   }
 

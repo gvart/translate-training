@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'new-word',
     loadChildren: './main/new-word/new-word.module#NewWordModule'
+  },
+  {
+    path: 'test',
+    loadChildren: './main/test/test.module#TestModule'
   }
 ];
 
