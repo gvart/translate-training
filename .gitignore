@@ -9,7 +9,6 @@
 !gradle/wrapper/gradle-wrapper.jar
 .gradle/
 /client/dist/
-/client/.gradle/
 /client/build/
 /client/node_modules/
 /client/node/

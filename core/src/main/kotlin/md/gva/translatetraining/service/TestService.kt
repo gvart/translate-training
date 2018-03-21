@@ -16,7 +16,7 @@ class TestService (val sentenceRepository: SentenceRepository) {
             return emptyList()
         }
         else if(size >= 10){
-            return list.subList(0, 9)
+            return list.subList(0, 10)
         }
 
         return list.subList(0, list.size - 1 )

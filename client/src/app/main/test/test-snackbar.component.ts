@@ -10,7 +10,7 @@ import {DictionaryService} from "../../../shared/service/dictionary.service";
 export class TestSnackbarComponent {
   public ref: MatSnackBarRef<TestSnackbarComponent>;
 
-  private sentence: Sentence;
+  sentence: Sentence;
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: Sentence,
               private service:DictionaryService) {
     this.sentence = data;

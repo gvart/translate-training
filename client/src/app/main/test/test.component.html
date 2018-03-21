@@ -1,16 +1,20 @@
-<div fxLayout="row" style="background-color: red">tts</div>
-<div fxFill fxLayout="row" fxLayoutAlign="center center">
-  <div *ngIf="!testEnds">
+<div fxFill fxLayout="row">
+  <div fxFlexOffset="15" fxFlex="70" fxLayoutAlign="center center" *ngIf="!testEnds">
     <div *ngIf="!sentences">
       <button (click)="startTest()">Start test</button>
     </div>
-    <div *ngIf="currentSentence">
+    <div fxLayout="column" *ngIf="sentences">
       <span>{{currentSentence.deutsch}}</span>
       <button (click)="showTranslation()" [disabled]="locked" mat-raised-button="primary">Show Translation</button>
     </div>
   </div>
-  <div *ngIf="testEnds">
-    Test ended.
+  <div fxFlex="15" fxLayoutAlign="end start" style="padding-right: 10px" *ngIf="!testEnds && sentences">
+    <h4>{{ (counter+1) + '/' +  sentences.length}}</h4>
+  </div>
+
+  <div fxFlex="100" fxLayoutAlign="center center" *ngIf="testEnds">
+    <h2>Test ended.</h2>
+    <button (click)="startTest()">Start test again</button>
   </div>
 </div>
 

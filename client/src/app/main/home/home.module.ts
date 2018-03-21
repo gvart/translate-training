@@ -8,6 +8,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {HttpClient} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {MatCardModule} from '@angular/material/card'
+import {MatButtonModule} from "@angular/material";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/home/', '.json');
@@ -25,7 +27,8 @@ export function createTranslateLoader(http: HttpClient) {
       },
       isolate: true
     }),
-
+    MatCardModule,
+    MatButtonModule,
     MatProgressBarModule,
     routing
   ],

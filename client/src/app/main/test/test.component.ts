@@ -15,13 +15,12 @@ import {TestService} from "../../../shared/service/test.service";
 })
 export class TestComponent implements OnInit {
   private counter: number;
-  private sentences: Sentence[];
+  sentences: Sentence[];
   private currentSentence: Sentence;
-  private testEnds: boolean;
+  testEnds: boolean;
   private locked: boolean;
 
-  constructor(private cd: ChangeDetectorRef,
-
+  constructor(private ref: ChangeDetectorRef,
               private translate: TranslateService,
               public snackBar: MatSnackBar,
               private service: TestService,
@@ -30,21 +29,27 @@ export class TestComponent implements OnInit {
   ngOnInit() {
     this.translate.setDefaultLang('en');
     this.translate.use('en');
+    this.currentSentence = new Sentence();
   }
 
   startTest() {
+    this.testEnds = false;
     this.service.getTest().subscribe((res) => {
       this.counter = 0;
       this.sentences = res;
       this.nextWord();
     });
-
   }
 
   nextWord() {
-    this.currentSentence = null;
-    this.currentSentence = this.sentences[this.counter];;
+    const tempSentence = this.sentences[this.counter];
+
+    this.currentSentence.id = tempSentence.id;
+    this.currentSentence.deutsch = tempSentence.deutsch;
+    this.currentSentence.russian= tempSentence.russian;
+    this.currentSentence.solved = tempSentence.solved;
     this.locked = false;
+    this.ref.detectChanges();
   }
 
   showTranslation() {
@@ -53,14 +58,17 @@ export class TestComponent implements OnInit {
       data: this.currentSentence,
       duration: 50000
     });
+
     ref.instance.ref = ref;
 
     ref.afterDismissed().subscribe(() => {
       if((this.sentences.length-1) > this.counter) {
         this.counter++;
         this.nextWord();
+        console.log("yes");
       } else {
         this.testEnds = true;
+        this.ref.detectChanges();
       }
     });
   }

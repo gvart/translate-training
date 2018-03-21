@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./new-word.component.css']
 })
 export class NewWordComponent implements OnInit {
-  private word: DictionaryDTO;
+  word: DictionaryDTO;
 
   constructor(private translate: TranslateService,
               private service: DictionaryService,

@@ -11,7 +11,7 @@ import {DictionaryUtil} from "../../../shared/util/dictionary.util";
 })
 export class HomeComponent implements OnInit {
 
-  private words: Dictionary[];
+  words: Dictionary[];
   private dictionaryUtil: DictionaryUtil;
 
   constructor(private translate: TranslateService,

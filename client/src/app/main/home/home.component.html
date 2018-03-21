@@ -1,9 +1,16 @@
-<div *ngIf="words">
-  <div fxLayout="column">
-    <div fxLayoutGap="10px" fxFlex="50" fxLayoutAlign="space-between center" *ngFor="let item of words">
-      <h4>{{item.name}}</h4>
-      <mat-progress-bar mode="determinate" [value]="dictionaryUtil.solvedPercentage(item)"></mat-progress-bar>
-      <span>{{dictionaryUtil.solvedPercentage(item) + '%'}}</span>
+  <div fxLayout="column" *ngIf="words">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <fa name="list-alt" size="2x"></fa>&nbsp;<h2 class="">List of words</h2>
+    </div>
+
+    <div fxFlexOffset="1" fxLayout="row" *ngFor="let item of words">
+      <mat-card fxLayoutGap="10px" fxFlexOffset="15" fxFlex="70" fxLayoutAlign="center center">
+          <span>{{item.name}}</span>
+          <mat-progress-bar mode="determinate" [value]="dictionaryUtil.solvedPercentage(item)"></mat-progress-bar>
+          <span>{{dictionaryUtil.solvedPercentage(item) + '%'}}</span>
+          <button  mat-icon-button>
+            <fa style="color: red" size="2x" name="close"></fa>
+          </button>
+      </mat-card>
     </div>
   </div>
-</div>
