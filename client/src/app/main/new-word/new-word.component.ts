@@ -23,9 +23,9 @@ export class NewWordComponent implements OnInit {
   }
 
   saveWord() {
-    this.service.saveWord(this.word).subscribe( (response) => {
-      this.router.navigate(['/']);
-    });
+    this.service.saveWord(this.word)
+      .subscribe( (response) => this.router.navigate(['/']),
+                  (error) =>  alert("dasasd"));
   }
 
 }

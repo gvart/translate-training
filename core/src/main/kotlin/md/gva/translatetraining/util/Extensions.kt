@@ -12,3 +12,16 @@ fun ServerResponse.BodyBuilder.json() = contentType(MediaType.APPLICATION_JSON_U
 fun Dictionary.solved(): Boolean {
     return sentences.all { it.solved }
 }
+
+fun String.formatRussianCharacters(): String {
+    return toString().replace("и́", "и")
+            .replace("э́́", "э")
+            .replace("э́", "э")
+            .replace("а́", "а")
+            .replace("е́", "е")
+            .replace("о́", "о")
+            .replace("я́́", "я")
+            .replace("я́", "я")
+            .replace("у́", "у")
+            .replace("ы́", "ы")
+}

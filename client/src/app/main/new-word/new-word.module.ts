@@ -8,6 +8,7 @@ import {MatInputModule, MatButtonModule} from "@angular/material";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {SharedModule} from '../../shared.module';
 import {DictionaryService} from "../../../shared/service/dictionary.service";
+import {SpinnerComponent} from "../../util/spinner/spinner.component";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/new-word/', '.json');
@@ -31,7 +32,8 @@ export function createTranslateLoader(http: HttpClient) {
     routing
   ],
   declarations: [
-    NewWordComponent
+    NewWordComponent,
+    SpinnerComponent
   ],
   providers: [
     DictionaryService

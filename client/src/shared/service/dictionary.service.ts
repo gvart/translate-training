@@ -1,7 +1,8 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Dictionary, DictionaryDTO} from "../model/dictionary.model";
+import "rxjs/add/operator/catch";
 
 
 @Injectable()
@@ -13,7 +14,8 @@ export class DictionaryService {
   }
 
   public saveWord(dto: DictionaryDTO): Observable<Dictionary> {
-    return this.http.post<Dictionary>(this.URL, dto);
+    return this.http.post<Dictionary>(this.URL, dto)
+      .catch(this.errorHandler);
   }
 
   public listWords(): Observable<Dictionary[]> {
@@ -34,4 +36,7 @@ export class DictionaryService {
   }
 
 
+  errorHandler(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server Error");
+  }
 }

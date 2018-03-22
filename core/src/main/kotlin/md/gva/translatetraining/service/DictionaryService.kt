@@ -23,12 +23,16 @@ class DictionaryService(
             val item = dictionaryRepository.findByNameIgnoreCase(word.name).block()
             if (item == null) {
                 val sentences = phrasesService.getPhrases(word.name)
-                val saveAll = sentenceRepository.saveAll(sentences).collectList()
-                val dictionary = Dictionary()
 
-                dictionary.name = word.name
-                dictionary.sentences = saveAll.block()!!
-                return dictionaryRepository.save(dictionary)
+                if(sentences.isNotEmpty()) {
+                    val saveAll = sentenceRepository.saveAll(sentences).collectList()
+                    val dictionary = Dictionary()
+
+                    dictionary.name = word.name
+                    dictionary.sentences = saveAll.block()!!
+                    return dictionaryRepository.save(dictionary)
+                }
+                return Mono.empty()
             }
         }
         return Mono.empty()
