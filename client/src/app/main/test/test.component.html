@@ -1,20 +1,26 @@
 <div fxFill fxLayout="row">
   <div fxFlexOffset="15" fxFlex="70" fxLayoutAlign="center center" *ngIf="!testEnds">
     <div *ngIf="!sentences">
-      <button (click)="startTest()">Start test</button>
+      <button (click)="startTest()" mat-raised-button="accent">Start test</button>
     </div>
-    <div fxLayout="column" *ngIf="sentences">
-      <span>{{currentSentence.deutsch}}</span>
+    <div fxLayout="column" *ngIf="sentences && sentences.length > 0">
+      <h4>{{currentSentence.deutsch}}</h4>
       <button (click)="showTranslation()" [disabled]="locked" mat-raised-button="primary">Show Translation</button>
     </div>
+
+    <div *ngIf="sentences.length == 0">
+      <h2>Insufficient words. <a routerLink="/new-word">Add more</a> and start test again</h2>
+    </div>
   </div>
-  <div fxFlex="15" fxLayoutAlign="end start" style="padding-right: 10px" *ngIf="!testEnds && sentences">
+
+  <div fxFlex="15" fxLayoutAlign="end start" style="padding-right: 10px" *ngIf="!testEnds && sentences && sentences.length > 0">
     <h4>{{ (counter+1) + '/' +  sentences.length}}</h4>
   </div>
 
   <div fxFlex="100" fxLayoutAlign="center center" *ngIf="testEnds">
-    <h2>Test ended.</h2>
-    <button (click)="startTest()">Start test again</button>
+    <button (click)="startTest()" mat-raised-button="primary">
+      <fa name="refresh"></fa> Run again
+    </button>
   </div>
 </div>
 

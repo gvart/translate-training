@@ -33,15 +33,18 @@ export class TestComponent implements OnInit {
   }
 
   startTest() {
-    this.testEnds = false;
     this.service.getTest().subscribe((res) => {
       this.counter = 0;
       this.sentences = res;
-      this.nextWord();
+
+      if(this.sentences.length > 0){
+        this.nextWord();
+      }
     });
   }
 
   nextWord() {
+    this.testEnds = false;
     const tempSentence = this.sentences[this.counter];
 
     this.currentSentence.id = tempSentence.id;

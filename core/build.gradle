@@ -15,9 +15,9 @@ buildscript {
 
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'eclipse'
 
 group = 'md.gva'
 version = '0.0.1-SNAPSHOT'
@@ -69,6 +69,8 @@ bootJar {
     into('BOOT-INF/classes/static') {
         from "${project(':client').projectDir}/dist"
     }
+
+    launchScript()
 }
 
 //task copyPublicResources(type: Copy){

@@ -10,6 +10,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {SharedModule} from "./shared.module";
+import {SimpleNotificationsModule} from "angular2-notifications";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -22,6 +23,8 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     SharedModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot(),
     RouterModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -31,7 +34,6 @@ export function createTranslateLoader(http: HttpClient) {
           deps: [HttpClient]
         }
     }),
-    BrowserAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,

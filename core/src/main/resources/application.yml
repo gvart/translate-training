@@ -4,6 +4,7 @@ spring:
   data:
     mongodb:
       host: localhost
+      port: 27018
       database: translate_training
 
 

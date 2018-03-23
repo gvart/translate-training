@@ -62,13 +62,12 @@ class DictionaryService(
         return dictionaryRepository.findById(id)
     }
 
-    fun delete(id: String): Mono<Void> {
-        dictionaryRepository.findById(id).doOnSuccess { dictionary ->
-            run {
-                sentenceRepository.deleteAll(dictionary.sentences).doOnSuccess {
-                    dictionaryRepository.deleteById(id)
-                }
-            }
+    fun delete(id: String): Mono<Any> {
+        val dictionary = dictionaryRepository.findById(id).block()
+        if (dictionary != null) {
+            dictionary.sentences.forEach { sentenceRepository.delete(it).block() }
+            dictionaryRepository.delete(dictionary).block()
+            return Mono.just(true)
         }
 
         return Mono.empty()

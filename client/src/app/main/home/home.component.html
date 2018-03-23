@@ -8,7 +8,7 @@
           <span>{{item.name}}</span>
           <mat-progress-bar mode="determinate" [value]="dictionaryUtil.solvedPercentage(item)"></mat-progress-bar>
           <span>{{dictionaryUtil.solvedPercentage(item) + '%'}}</span>
-          <button  mat-icon-button>
+          <button  (click)="deleteWord(item)" mat-icon-button>
             <fa style="color: red" size="2x" name="close"></fa>
           </button>
       </mat-card>

@@ -1,10 +1,13 @@
-<div class="container">
-  <div fxFlex>
-    <mat-form-field>
-      <input [(ngModel)]="word.name" matInput [placeholder]="'newWord' | translate">
-    </mat-form-field>
-    <button (click)="saveWord()" mat-raised-button color="primary"><fa name="check"></fa>{{'save' | translate}}</button>
+<div id="panel" fxLayout="row" fxLayoutAlign="center">
+  <mat-card><fa name="graduation-cap"></fa> Insert new word to study it.</mat-card>
   </div>
-</div>
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input formControlName="name" matInput [placeholder]="'newWord' | translate"/>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary"><fa name="check"></fa>{{'save' | translate}}</button>
+    </form>
+  </div>
 
-<app-spinner></app-spinner>
+<app-spinner [loading]="loading"></app-spinner>

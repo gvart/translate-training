@@ -7,6 +7,12 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public options = {
+    timeOut: 1,
+    showProgressBar: false,
+    pauseOnHover: false
+  };
+
   constructor(translate: TranslateService) {
     translate.setDefaultLang('en');
     translate.use('en');

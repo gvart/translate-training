@@ -20,8 +20,12 @@ fun String.formatRussianCharacters(): String {
             .replace("а́", "а")
             .replace("е́", "е")
             .replace("о́", "о")
+            .replace("о́", "о")
             .replace("я́́", "я")
             .replace("я́", "я")
             .replace("у́", "у")
             .replace("ы́", "ы")
+            .replace("и́", "и")
+            .replace("я́", "я")
+            .replace("у́", "у")
 }
