@@ -1,11 +1,12 @@
-div:hover h1 {
+h1 {
+  display: inline;
+}
+
+#logo:hover  h1{
   cursor: pointer;
   color: black !important;
 }
 
-h1 {
-  display: inline;
-}
 
 h1#second {
   color: #673AB7;
@@ -16,7 +17,8 @@ mat-sidenav > button {
 }
 
 mat-sidenav {
-  background-color: blanchedalmond;
+  background-color: rgba(201, 190, 188, 0);
+  border-right: 1px solid black;
 }
 
 footer {
