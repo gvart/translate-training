@@ -14,11 +14,11 @@ import {TestService} from "../../../shared/service/test.service";
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-  private counter: number;
+  counter: number;
   sentences: Sentence[];
-  private currentSentence: Sentence;
+  currentSentence: Sentence;
   testEnds: boolean;
-  private locked: boolean;
+  locked: boolean;
 
   constructor(private ref: ChangeDetectorRef,
               private translate: TranslateService,

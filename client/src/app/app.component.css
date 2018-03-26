@@ -24,3 +24,7 @@ footer {
   color: slategray;
   font-size: 10pt;
 }
+
+.container {
+  min-height: 100%;
+}

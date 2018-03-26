@@ -1,26 +1,28 @@
-<header>
-  <mat-toolbar color="accent">
-    <div routerLink="/"><h1 id="first">TT</h1><h1 id="second">raining</h1></div>
-    <button mat-icon-button (click)="sidenav.toggle()">
-      <fa name="bars"></fa>
-    </button>
-  </mat-toolbar>
-</header>
+<div class="container" fxLayout="column">
+  <header>
+    <mat-toolbar color="accent">
+      <div routerLink="/"><h1 id="first">TT</h1><h1 id="second">raining</h1></div>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <fa name="bars"></fa>
+      </button>
+    </mat-toolbar>
+  </header>
 
-<mat-sidenav-container style="height: 100%">
+<mat-sidenav-container fxFlex>
 
   <mat-sidenav #sidenav mode="side">
-    <a mat-button="primary" routerLink="/new-word">
+    <button mat-button="primary" routerLink="/new-word">
       <fa name="font"></fa>Add Word
-    </a>
+    </button>
     <button mat-button="primary" routerLink="/test">
       <fa name="file"></fa>Start Test
     </button>
   </mat-sidenav>
-
-  <router-outlet></router-outlet>
-
+  <mat-sidenav-content fxFill>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>
 <simple-notifications [options]="options"></simple-notifications>
 <footer>Developed by <a href="#">GVA</a> with <fa style="color: red;" name="heart"></fa></footer>
 
+</div>

@@ -1,19 +1,19 @@
-<div fxFill fxLayout="row">
+<div fxLayout="row">
   <div fxFlexOffset="15" fxFlex="70" fxLayoutAlign="center center" *ngIf="!testEnds">
     <div *ngIf="!sentences">
       <button (click)="startTest()" mat-raised-button="accent">Start test</button>
     </div>
-    <div fxLayout="column" *ngIf="sentences && sentences.length > 0">
+    <div fxLayout="column" *ngIf="sentences">
       <h4>{{currentSentence.deutsch}}</h4>
       <button (click)="showTranslation()" [disabled]="locked" mat-raised-button="primary">Show Translation</button>
     </div>
 
-    <div *ngIf="sentences.length == 0">
+    <div *ngIf="sentences == []">
       <h2>Insufficient words. <a routerLink="/new-word">Add more</a> and start test again</h2>
     </div>
   </div>
 
-  <div fxFlex="15" fxLayoutAlign="end start" style="padding-right: 10px" *ngIf="!testEnds && sentences && sentences.length > 0">
+  <div fxFlex="15" fxLayoutAlign="end" style="padding-right: 10px" *ngIf="!testEnds && sentences">
     <h4>{{ (counter+1) + '/' +  sentences.length}}</h4>
   </div>
 
